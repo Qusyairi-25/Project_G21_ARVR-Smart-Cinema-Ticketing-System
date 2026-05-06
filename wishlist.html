@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wishlist - ARVR Cinema</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* ================= RESET ================= */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #140005;
+        color: white;
+    }
+
+    h1, h2 {
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 2px;
+    }
+
+    /* ================= LAYOUT ================= */
+    .dashboard {
+        display: flex;
+        height: 100vh;
+    }
+
+    /* ================= SIDEBAR ================= */
+    .sidebar {
+        width: 220px;
+        background: rgba(20, 0, 5, 0.95);
+        padding: 30px 20px;
+        border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo-text {
+        color: #ff4d6d;
+        margin-bottom: 40px;
+        font-size: 26px;
+    }
+
+    .menu {
+        list-style: none;
+    }
+
+    .menu li {
+        padding: 12px 0;
+        opacity: 0.7;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .menu li:hover,
+    .menu .active {
+        color: #ff4d6d;
+        opacity: 1;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        padding: 10px 15px;
+    }
+
+    .menu li {
+        list-style: none;
+    }
+
+    .menu li.active a {
+        font-weight: bold;
+        color: #ff4d4d;
+    }
+
+    .menu li a:hover {
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+    }
+
+    /* ================= MAIN ================= */
+    .main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    /* ================= TOPBAR ================= */
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .topbar input {
+        width: 300px;
+        padding: 10px 15px;
+        border-radius: 20px;
+        border: none;
+        background: #2b0a14;
+        color: white;
+    }
+
+    .profile-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+    .profile-btn img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .profile-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+        height: 250px;
+        border-radius: 20px;
+        background:
+            linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2)),
+            url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba') center/cover;
+        display: flex;
+        align-items: center;
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        margin: 10px 0;
+        opacity: 0.85;
+    }
+
+    .hero button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #800020, #ff4d6d);
+        color: white;
+        cursor: pointer;
+    }
+
+    /* ================= SECTION TITLE ================= */
+    .section-title {
+        margin-bottom: 15px;
+    }
+
+
+    /* ================= MOVIE ROWS ================= */
+    .movie-row {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .movies {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 20px;
+    }
+
+    .movies::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* ================= CARD ================= */
+    .card {
+        min-width: 180px;
+        height: 260px;
+        border-radius: 15px;
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.12);
+        z-index: 10;
+        box-shadow: 0 20px 40px rgba(255, 77, 109, 0.4);
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .card:hover::before {
+        opacity: 1;
+    }
+
+    .card::after {
+        content: "Book Now";
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transition: 0.3s;
+        font-size: 14px;
+    }
+
+    .card:hover::after {
+        opacity: 1;
+    }
+
+    /* ================= SCROLL BUTTONS ================= */
+    .scroll-btn {
+        position: absolute;
+        background: rgba(0,0,0,0.6);
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 10;
+    }
+
+    .scroll-btn.left { left: 0; }
+    .scroll-btn.right { right: 0; }
+
+    /* ================= ARROWS (CAROUSEL STYLE) ================= */
+        /* wrapper */
+        .carousel-wrapper {
+        overflow: hidden;
+        padding: 50px 20px;
+        }
+
+        /* row */
+        .carousel {
+        display: flex;
+        gap: 18px;
+        transition: transform 0.6s ease;
+        }
+
+       /* ================= MOVIE CARD ================= */
+        .movie-card {
+            flex: 0 0 auto;
+            width: 240px;   /* 🔥 bigger */
+            height: 360px;  /* 🔥 taller */
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+
+            transform: scale(1);
+            opacity: 0.65;
+
+            transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+
+        /* image */
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* overlay */
+        .movie-card .overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 14px;
+
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+
+            transform: translateY(30%);
+            opacity: 0;
+            transition: 0.35s ease;
+
+            font-size: 13px;
+        }
+
+        /* hover */
+        .movie-card:hover {
+            transform: scale(1.08);
+            opacity: 1;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.45);
+        }
+
+        /* overlay hover */
+        .movie-card:hover .overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ACTIVE CENTER CARD */
+        .movie-card.active {
+            transform: scale(1.18);
+            opacity: 1;
+            z-index: 20;
+        }
+
+        /* extra wishlist styling */
+        .wishlist-title {
+            margin: 20px 0;
+            font-size: 28px;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            height: 260px;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+        </style>
+        </head>
+
+        <body>
+
+        <div class="dashboard">
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <h2 class="logo-text">ARVR</h2>
+                <ul class="menu">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li class="active"><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="genres.html">Genres</a></li>
+                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                    <li><a href="badges.html">Badges</a></li>
+                    <li><a href="Ticket.html">My Tickets</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <!-- MAIN -->
+            <div class="main">
+
+                <div class="topbar">
+                    <input type="text" placeholder="Search wishlist...">
+                    <button class="profile-btn">
+                        <img src="profileIcon.jpg">
+                    </button>
+                </div>
+
+                <h2 class="wishlist-title">❤️ My Wishlist</h2>
+
+                <div class="wishlist-grid">
+
+                    <div class="card" style="background-image:url('https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg')">
+                        <button class="remove">×</button>
+                    </div>
+
+                    <div class="card" style="background-image:url('https://image.tmdb.org/t/p/w500/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg')">
+                        <button class="remove">×</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</body>
+</html>

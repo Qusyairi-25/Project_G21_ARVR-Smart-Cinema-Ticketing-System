@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Movie Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #140005;
+    color: white;
+}
+
+/* ===== BACK BUTTON ===== */
+.back {
+    padding: 20px 40px;
+}
+
+.back a {
+    color: #ff4d6d;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 400px;
+    background:
+        linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.2)),
+        url('https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg') center/cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* ===== POSTER ===== */
+.poster {
+    width: 260px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ===== INFO ===== */
+.info {
+    max-width: 600px;
+}
+
+.info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+}
+
+.meta {
+    margin: 15px 0;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.description {
+    margin: 20px 0;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* ===== PRICE BOX ===== */
+.price-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: #2b0a14;
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.price-box span {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.price {
+    font-size: 26px;
+    color: #ff4d6d;
+    margin-top: 5px;
+}
+
+/* ===== BUTTON ===== */
+.book-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #800020, #ff4d6d);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ===== EXTRA SECTION ===== */
+.extra {
+    padding: 40px;
+}
+
+.extra h2 {
+    margin-bottom: 15px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- BACK -->
+<div class="back">
+    <a href="homepage.html">← Back to Home</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Interstellar</h1>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- POSTER -->
+    <img class="poster" src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg">
+
+    <!-- INFO -->
+    <div class="info">
+        <h1>Interstellar</h1>
+
+        <div class="meta">
+            ⭐ 8.7 | ⏱ 2h 49m | 🎬 Sci-Fi
+        </div>
+
+        /* nanti database, tukar yang contoh ni kpd pape id dalam databse*/
+
+        <div class="description">
+            A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. 
+            The film explores love, time, and sacrifice across galaxies.
+        </div>
+
+        <!-- PRICE -->
+        <div class="price-box">
+            <span>Ticket Price</span>
+            <div class="price">RM 18.00</div>
+        </div>
+
+        <!-- BUTTON -->
+        <button class="book-btn">Book Now</button>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

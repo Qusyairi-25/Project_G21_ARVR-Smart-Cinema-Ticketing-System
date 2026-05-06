@@ -1,0 +1,214 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* HEADINGS */
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+}
+
+/* WRAPPER */
+.wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT SIDE */
+.left {
+    flex: 1;
+    background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4') no-repeat center/cover;
+    position: relative;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(60, 0, 20, 0.75);
+    color: white;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* BRAND */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    position: absolute;
+    top: 30px;
+    left: 40px;
+}
+
+/* LOGO */
+.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.6));
+}
+
+/* TEXT */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.site-name {
+    font-size: 38px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tagline {
+    font-size: 23px;
+    opacity: 0.75;
+    font-style: italic;
+    color: #ffb3c1;
+}
+
+/* HERO TEXT (center-left feel) */
+
+.hero-text {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    max-width: 500px;
+}
+
+.hero-text h1 {
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 18px;
+    opacity: 0.85;
+}
+
+/* RIGHT SIDE */
+.right {
+    flex: 1;
+    background: #1a0008;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FORM CONTAINER */
+.container {
+    background: #2b0a14;
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    animation: fadeIn 0.8s ease;
+}
+
+/* TITLE */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* INPUT */
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    background: transparent;
+    color: white;
+    outline: none;
+}
+
+/* LABEL */
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* FLOAT EFFECT */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -10px;
+    font-size: 12px;
+    color: #ff4d6d;
+}
+
+/* INPUT FOCUS LINE */
+.input-group input:focus {
+    border-bottom: 2px solid #ff4d6d;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #800020, #ff4d6d);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff4d6d;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer a {
+    color: #ff4d6d;
+    text-decoration: none;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
