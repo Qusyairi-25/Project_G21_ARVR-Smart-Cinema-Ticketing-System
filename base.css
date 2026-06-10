@@ -1,0 +1,42 @@
+/* ================= BASE.CSS ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #140005;
+    color: white;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .logo-text {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.text-glow { text-shadow: 0 0 10px rgba(255,77,109,0.5); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2b0a14;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff4d6d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #800020;
+}

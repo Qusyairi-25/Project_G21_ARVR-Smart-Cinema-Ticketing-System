@@ -1,0 +1,51 @@
+/* ================= SIDEBAR.CSS ================= */
+.sidebar {
+    width: 220px;
+    background: rgba(20, 0, 5, 0.95);
+    padding: 30px 20px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    
+}
+
+.logo-text {
+    color: #ff4d6d;
+    margin-bottom: 40px;
+    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 12px 0;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu li:hover,
+.menu .active {
+    color: #ff4d6d;
+    opacity: 1;
+}
+
+.menu a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px 15px;
+}
+
+.menu li a:hover {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
